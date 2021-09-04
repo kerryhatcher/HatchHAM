@@ -22,8 +22,17 @@ jobs:
       with:
         go-version: 1.17
 
-    - name: Build
+    - name: Build Native
       run: go build -v -o ./bin/ ./...
+
+    - name: Build Windows AMD64
+      run: env GOOS=windows GOARCH=amd64 go build -v -o ./bin/hd1conman_windows_amd64.exe ./...
+
+    - name: Build Linux AMD64
+      run: env GOOS=linux GOARCH=amd64 go build -v -o ./bin/hd1conman_linux_amd64 ./...
+
+    - name: Build darwin AMD64
+      run: env GOOS=darwin GOARCH=amd64 go build -v -o ./bin/hd1conman_darwin_amd64 ./...
 
     - name: Test
       run: go test -v ./...
@@ -37,9 +46,9 @@ jobs:
       with:
         prerelease: true
         files: |
-          bin/hd1conman
+          bin/hd1conman_darwin_amd64
+          bin/hd1conman_linux_amd64
+          bin/hd1conman_windows_amd64.exe
           LICENSE
-          README.md
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+
       
