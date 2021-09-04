@@ -3,9 +3,9 @@ name: Tag Release
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "a*.*.*"
 
-      
+
 jobs:
 
   build:
