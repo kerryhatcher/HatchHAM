@@ -1,4 +1,4 @@
-package hd1conman
+package main
 
 import (
 	"encoding/json"
